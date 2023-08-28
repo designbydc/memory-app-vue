@@ -1,26 +1,32 @@
 <template>
     <div class="cards">
-        <div class="cards__row" v-for="(row, rowIndex) in grid.items" :key="rowIndex">
-            <div class="cards__col card" 
-            v-for="(colValue, colIndex) in row" 
-            :class="[`--${colValue}`, { '--active': grid.revealed[rowIndex][colIndex] }]"
-            :key="colIndex" 
-            @click="handleClick(rowIndex, colIndex)"
+        <div 
+          class="cards__row" 
+          v-for="(row, rowIndex) in grid.items" 
+          :key="rowIndex">
+            <div 
+              v-for="(colValue, colIndex) in row" 
+              class="cards__col card" 
+              :class="[`--${colValue}`, { '--active': grid.revealed[rowIndex][colIndex] }]"
+              :key="colIndex" 
+              @click="handleClick(rowIndex, colIndex)"
             >
             <div class="card-box">
-                <span class="card-box__back">{{ colValue }}</span>
+                <span class="card-box__back">
+                  {{ colValue }}
+                </span>
             </div>
-            </div>
+          </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { GridCell, TGridTemplate } from '@/helpers/types'
-import { sleep } from '@/helpers'
-import { useState } from '@/composables/useState'
-import { useEventBus } from '@/composables/useEventBus'
+import type { GridCell, TGridTemplate } from '../helpers/types'
+import { sleep } from '../helpers'
+import { useState } from '../composables/useState'
+import { useEventBus } from '../composables/useEventBus'
 
 const gridTemplate: TGridTemplate<number> = [
   [0, 1, 3, 5],
@@ -45,6 +51,7 @@ function handleClick(row: number, col: number) {
 
   const clickedNumber = grid.items[row][col]
   const updateRevealedGrid = [...grid.revealed]
+  
   updateRevealedGrid[row][col] = true
 
   if (prevClick.value) {

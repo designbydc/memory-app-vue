@@ -1,19 +1,10 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
-  "include": [
-    "vite.config.*",
-    "src/**/*.d.ts",
-    "src/**/*.ts"
-  ],
   "compilerOptions": {
-    "baseUrl": ".",
     "composite": true,
+    "skipLibCheck": true,
     "module": "ESNext",
-    "isolatedModules": true,
-    "moduleResolution": "node",
-    "types": ["node"],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["vite.config.*"]
 }

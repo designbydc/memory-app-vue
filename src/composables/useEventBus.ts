@@ -1,5 +1,5 @@
 import mitt from 'mitt'
-import { EmitEventValues } from '@/helpers/types'
+import { EmitEventValues } from '../helpers/types'
 
 const emitter = mitt()
 

@@ -9,11 +9,11 @@
 </template>
 
 <script setup lang="ts">
-import { useState } from '@/composables/useState'
-import { useEventBus } from '@/composables/useEventBus'
+import { useState } from './composables/useState'
+import { useEventBus } from './composables/useEventBus'
 
-import Cards from '@/components/Cards.vue'
-import Button from '@/components/Button.vue'
+import Cards from './components/Cards.vue'
+import Button from './components/Button.vue'
 
 const { state } = useState()
 const { $emit } = useEventBus()

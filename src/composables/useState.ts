@@ -1,6 +1,6 @@
-import { readonly, reactive } from 'vue';
+import { readonly, shallowReactive } from 'vue';
 
-const state = reactive({
+const state = shallowReactive({
     solved: false
 });
 
